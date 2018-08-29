@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const url = '/api/authors';
 
-const GetAuthorsByTopBooks = () => new Promise(
+const GetAuthorsTopBooks = () => new Promise(
     (resolve, reject) =>
         axios.get(url)
-            .then(res => resolve(mapToTable(res.data)))
+            .then(res => resolve(res.data))
             .catch(err => reject(err)) 
 );
 
@@ -16,17 +16,7 @@ const GetAuthorBooksByName = name => new Promise(
             .catch(err => reject(err))
 );
 
-const mapToTable = authors =>
-    authors.map(author => ({
-        name: author.name,
-        title: author.topBook.title,
-        type: author.topBook.type,
-        price: author.topBook.price,
-        publishedOn: author.topBook.publishedOn
-    }))
-
-
 export default {
-    GetAuthorsByTopBooks,
+    GetAuthorsTopBooks,
     GetAuthorBooksByName
 }

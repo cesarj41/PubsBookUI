@@ -13,7 +13,7 @@ class App extends Component {
     }
     this.getAuthorsBySales = () =>
       authorService
-        .GetAuthorsByTopBooks()
+        .GetAuthorsTopBooks()
           .then(authors => this.setState({
             authors,
             back: false
